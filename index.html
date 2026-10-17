@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rahul Kumar Gupta | Senior Engineer Projects</title>
+<meta name="description" content="Rahul Kumar Gupta — SOC Analyst specialising in CrowdStrike Falcon EDR/XDR, Splunk SIEM, MITRE ATT&CK mapping and incident response.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e14;
+    --bg-alt: #0f141c;
+    --card: #131a24;
+    --border: #1f2a38;
+    --text: #e6edf3;
+    --muted: #8b98a9;
+    --accent: #2ee6a6;
+    --accent-dim: rgba(46, 230, 166, 0.12);
+    --accent-2: #4da3ff;
+    --radius: 14px;
+    --max: 1120px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  .mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+  .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+  /* Nav */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(10, 14, 20, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { font-weight: 700; font-size: 1.05rem; letter-spacing: 0.3px; }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { color: var(--muted); font-size: 0.92rem; font-weight: 500; transition: color .2s; }
+  .nav-links a:hover { color: var(--accent); }
+  .menu-btn { display: none; background: none; border: 1px solid var(--border); color: var(--text); border-radius: 8px; padding: 6px 10px; cursor: pointer; font-size: 1rem; }
+
+  /* Hero */
+  .hero { padding: 110px 0 90px; position: relative; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at 30% 40%, black 10%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at 30% 40%, black 10%, transparent 70%);
+    opacity: 0.5; pointer-events: none;
+  }
+  .hero .container { position: relative; }
+  .status {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent-dim); color: var(--accent);
+    border: 1px solid rgba(46, 230, 166, 0.3);
+    padding: 6px 14px; border-radius: 999px; font-size: 0.82rem; margin-bottom: 26px;
+  }
+  .status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); animation: pulse 2s infinite; }
+  @keyframes pulse { 50% { opacity: .35; } }
+  .hero h1 { font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 800; line-height: 1.1; letter-spacing: -1.5px; }
+  .hero h2 { font-size: clamp(1.15rem, 2.6vw, 1.5rem); font-weight: 500; color: var(--muted); margin: 14px 0 22px; }
+  .hero h2 strong { color: var(--accent); font-weight: 600; }
+  .hero p.lead { max-width: 640px; color: var(--muted); font-size: 1.05rem; }
+  .cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 22px; border-radius: 10px; font-weight: 600; font-size: 0.95rem;
+    transition: transform .15s, background .2s, border-color .2s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary { background: var(--accent); color: #04140d; }
+  .btn-outline { border: 1px solid var(--border); color: var(--text); background: var(--card); }
+  .btn-outline:hover { border-color: var(--accent); }
+  .btn svg { width: 18px; height: 18px; }
+
+  /* Sections */
+  section { padding: 90px 0; }
+  section.alt { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .section-label { color: var(--accent); font-size: 0.82rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+  .section-title { font-size: clamp(1.7rem, 3.5vw, 2.3rem); font-weight: 700; letter-spacing: -0.5px; margin-bottom: 44px; }
+
+  /* Metrics */
+  .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .metric { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px 22px; }
+  .metric .num { font-size: 2.3rem; font-weight: 800; color: var(--accent); line-height: 1.1; }
+  .metric .label { color: var(--muted); font-size: 0.92rem; margin-top: 8px; }
+
+  /* About */
+  .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: start; }
+  .about-grid p { color: var(--muted); margin-bottom: 16px; font-size: 1.02rem; }
+  .about-grid p strong { color: var(--text); font-weight: 600; }
+  .info-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; }
+  .info-row { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 0.94rem; }
+  .info-row:last-child { border-bottom: none; }
+  .info-row span:first-child { color: var(--muted); }
+  .info-row span:last-child { text-align: right; }
+
+  /* Timeline */
+  .timeline { position: relative; padding-left: 32px; }
+  .timeline::before { content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: var(--border); }
+  .job { position: relative; margin-bottom: 44px; }
+  .job:last-child { margin-bottom: 0; }
+  .job::before {
+    content: ""; position: absolute; left: -32px; top: 8px;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: var(--bg); border: 3px solid var(--accent);
+  }
+  .job.past::before { border-color: var(--muted); }
+  .job-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; margin-bottom: 6px; }
+  .job-head h3 { font-size: 1.3rem; font-weight: 700; }
+  .job-meta { color: var(--muted); font-size: 0.9rem; }
+  .company { color: var(--accent-2); font-weight: 600; margin-bottom: 18px; display: block; }
+  .job-block { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 24px; margin-bottom: 16px; }
+  .job-block h4 { font-size: 1rem; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+  .job-block h4::before { content: ">"; color: var(--accent); font-family: "JetBrains Mono", monospace; }
+  .job-block ul { list-style: none; }
+  .job-block li { position: relative; padding-left: 20px; color: var(--muted); margin-bottom: 9px; font-size: 0.96rem; }
+  .job-block li:last-child { margin-bottom: 0; }
+  .job-block li::before { content: ""; position: absolute; left: 2px; top: 10px; width: 6px; height: 6px; border-radius: 2px; background: var(--accent); opacity: .7; }
+  .job-block li b { color: var(--text); font-weight: 600; }
+
+  /* Highlights */
+  .highlights { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .hl { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; transition: border-color .2s, transform .2s; }
+  .hl:hover { border-color: rgba(46, 230, 166, 0.45); transform: translateY(-3px); }
+  .hl .icon { width: 42px; height: 42px; border-radius: 10px; background: var(--accent-dim); color: var(--accent); display: grid; place-items: center; margin-bottom: 16px; }
+  .hl .icon svg { width: 22px; height: 22px; }
+  .hl h3 { font-size: 1.05rem; margin-bottom: 8px; }
+  .hl p { color: var(--muted); font-size: 0.94rem; }
+
+  /* Skills */
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .skill-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+  .skill-card h3 { font-size: 1rem; margin-bottom: 14px; color: var(--accent); font-weight: 600; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag { font-size: 0.84rem; padding: 6px 12px; border-radius: 8px; background: var(--bg); border: 1px solid var(--border); color: var(--text); }
+
+  /* Certs */
+  .certs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+  .cert { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 18px; text-align: center; }
+  .cert .badge { width: 48px; height: 48px; margin: 0 auto 14px; border-radius: 50%; background: var(--accent-dim); color: var(--accent); display: grid; place-items: center; }
+  .cert .badge svg { width: 24px; height: 24px; }
+  .cert h3 { font-size: 0.98rem; font-weight: 600; }
+  .cert p { font-size: 0.82rem; color: var(--muted); margin-top: 4px; }
+
+  /* Education */
+  .edu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .edu { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; border-left: 3px solid var(--accent); }
+  .edu.secondary { border-left-color: var(--border); }
+  .edu h3 { font-size: 1.08rem; margin-bottom: 4px; }
+  .edu .school { color: var(--muted); font-size: 0.95rem; }
+  .edu .years { margin-top: 10px; font-size: 0.85rem; color: var(--accent-2); }
+
+  /* Contact */
+  .contact-box { background: linear-gradient(135deg, var(--card), var(--bg-alt)); border: 1px solid var(--border); border-radius: 20px; padding: 56px 40px; text-align: center; }
+  .contact-box h2 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); margin-bottom: 14px; }
+  .contact-box > p { color: var(--muted); max-width: 560px; margin: 0 auto 34px; }
+  .contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+
+  footer { text-align: center; padding: 34px 0; color: var(--muted); font-size: 0.86rem; border-top: 1px solid var(--border); }
+
+  /* Reveal animation */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+
+  /* Responsive */
+  @media (max-width: 960px) {
+    .metrics { grid-template-columns: repeat(2, 1fr); }
+    .certs { grid-template-columns: repeat(3, 1fr); }
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 720px) {
+    .container { padding: 0 16px; }
+    .menu-btn { display: block; }
+    .nav-links {
+      display: none; position: absolute; top: 64px; left: 0; right: 0;
+      flex-direction: column; gap: 0; background: var(--bg-alt); border-bottom: 1px solid var(--border);
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { display: block; padding: 14px 16px; }
+    .hero { padding: 72px 0 60px; }
+    section { padding: 64px 0; }
+    .highlights, .skills-grid, .edu-grid { grid-template-columns: 1fr; }
+    .certs { grid-template-columns: repeat(2, 1fr); }
+    .contact-box { padding: 40px 20px; }
+    .job-block { padding: 18px; }
+  }
+  @media (max-width: 420px) {
+    .metrics { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .metric { padding: 18px 14px; }
+    .metric .num { font-size: 1.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <a href="#top" class="logo">Rahul<span>.</span>Gupta</a>
+    <button class="menu-btn" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#highlights">Highlights</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="container">
+    <div class="status mono">Open to SOC / Incident Response roles</div>
+    <h1>Rahul Kumar Gupta</h1>
+    <h2><strong>SOC Analyst</strong> &middot; CrowdStrike Falcon EDR/XDR &middot; Threat Detection</h2>
+    <p class="lead">I monitor, triage and respond to security incidents across 150+ endpoints — cutting detection time from 45 minutes to under 15 and reducing false-positive noise by 35%.</p>
+    <div class="cta">
+      <a href="#contact" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+        Get in touch
+      </a>
+      <a href="https://www.linkedin.com/in/rahul-kumar-gupta-7485aa21a" target="_blank" rel="noopener" class="btn btn-outline">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+        LinkedIn
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- Impact metrics -->
+<section class="alt" style="padding: 56px 0;">
+  <div class="container">
+    <div class="metrics">
+      <div class="metric reveal"><div class="num">&lt;15m</div><div class="label">Mean Time to Detect (down from 45 min)</div></div>
+      <div class="metric reveal"><div class="num">150+</div><div class="label">Falcon endpoint alerts triaged weekly</div></div>
+      <div class="metric reveal"><div class="num">35%</div><div class="label">Reduction in L1 false positives</div></div>
+      <div class="metric reveal"><div class="num">95%+</div><div class="label">Accurate threat classification</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="container">
+    <div class="section-label mono">// about</div>
+    <h2 class="section-title">Defending endpoints, one alert at a time</h2>
+    <div class="about-grid">
+      <div class="reveal">
+        <p>I'm a results-driven <strong>L1 SOC Analyst</strong> with 2+ year of hands-on experience monitoring, triaging and responding to security incidents, using <strong>CrowdStrike Falcon EDR/XDR</strong> as my primary detection platform.</p>
+        <p>My day-to-day spans Falcon Console alert management, <strong>SIEM log analysis in Splunk</strong>, and <strong>DLP monitoring with Forcepoint</strong>. I map detections to the <strong>MITRE ATT&amp;CK</strong> framework and support Atomic Red Team simulations to find and close detection gaps.</p>
+        <p>Before security, I spent over a year as a Desktop Support Engineer. That's where I picked up the patching discipline and endpoint hygiene that good EDR operations rely on. I'm now looking to go deeper into CrowdStrike threat detection and incident response.</p>
+      </div>
+      <div class="info-card reveal">
+        <div class="info-row"><span>Current role</span><span>Senior Engineer Projects</span></div>
+        <div class="info-row"><span>Company</span><span>CCS Computers Pvt. Ltd.</span></div>
+        <div class="info-row"><span>Location</span><span>Nehru Place, New Delhi</span></div>
+        <div class="info-row"><span>Experience</span><span>2+ yr SOC &middot; 1+ yr IT support</span></div>
+        <div class="info-row"><span>Primary stack</span><span>Falcon &middot; Splunk &middot; Forcepoint</span></div>
+        <div class="info-row"><span>Languages</span><span>English, Hindi</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Experience -->
+<section id="experience" class="alt">
+  <div class="container">
+    <div class="section-label mono">// experience</div>
+    <h2 class="section-title">Work experience</h2>
+    <div class="timeline">
+
+      <div class="job reveal">
+        <div class="job-head">
+          <h3>SOC Analyst (L1)</h3>
+          <span class="job-meta mono">06/2024 – Present &middot; New Delhi</span>
+        </div>
+        <span class="company">CCS Computers Pvt. Ltd.</span>
+
+        <div class="job-block">
+          <h4>CrowdStrike Falcon EDR/XDR: Alert Monitoring &amp; Triage</h4>
+          <ul>
+            <li>Monitored and acknowledged <b>150+ endpoint alerts per week</b> in the Falcon Console, keeping the average acknowledgment SLA <b>under 15 minutes</b>.</li>
+            <li>Triaged, categorised and escalated <b>60+ security incidents</b>, including malware detections, PowerShell abuse, fileless attack indicators and lateral movement.</li>
+            <li>Tuned Falcon detection rule filters, which <b>cut L1 false-positive workload by 35%</b> and saved the team 8+ hours a week.</li>
+            <li>Used <b>Charlotte AI</b>, Falcon's AI assistant, to speed up investigations and lighten analyst load during high-volume periods.</li>
+            <li>Kept incident logs, escalation notes and case documentation, with <b>95%+ correct threat classification</b> across reviewed alerts.</li>
+            <li>Used the Falcon <b>OverWatch</b> and <b>Spotlight</b> modules to track endpoint vulnerability exposure and prioritise remediation.</li>
+          </ul>
+        </div>
+
+        <div class="job-block">
+          <h4>MITRE ATT&amp;CK Mapping &amp; Threat Detection</h4>
+          <ul>
+            <li>Mapped common Falcon alert types to ATT&amp;CK technique IDs across Initial Access, Execution, Persistence and Lateral Movement.</li>
+            <li>Observed and supported <b>20+ Atomic Red Team simulation runs</b>, documenting Falcon detection gaps for senior analysts to tune rules against.</li>
+            <li>Shadowed purple-team work across <b>4 detection engineering sprints</b>, covering the full lifecycle from threat intel ingestion to Falcon rule deployment.</li>
+            <li>Improved ATT&amp;CK coverage by <b>30% in 6 months</b> by mapping 60+ TTPs and closing 12 critical gaps in detection logic.</li>
+          </ul>
+        </div>
+
+        <div class="job-block">
+          <h4>SIEM Log Review: Splunk Integration</h4>
+          <ul>
+            <li>Searched and reviewed logs from <b>150+ endpoints</b> in Splunk Enterprise, using SPL dashboards to correlate Falcon EDR telemetry with network and authentication events.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="job past reveal">
+        <div class="job-head">
+          <h3>Desktop Support Engineer (Internship)</h3>
+          <span class="job-meta mono">10/2022 – 01/2024</span>
+        </div>
+        <span class="company">Innovative Digitech Services</span>
+        <div class="job-block">
+          <ul>
+            <li>Resolved <b>300+ desktop, network and email incidents</b>, maintaining <b>99%+ system availability</b> with an average resolution time under 2 hours.</li>
+            <li>Achieved <b>98% patch compliance</b> on 100+ Windows endpoints within 48-hour patching windows.</li>
+            <li>Set up VPN and secure remote access for <b>50+ remote employees</b>, cutting related support tickets by 40%.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Highlights -->
+<section id="highlights">
+  <div class="container">
+    <div class="section-label mono">// key highlights</div>
+    <h2 class="section-title">Measurable impact</h2>
+    <div class="highlights">
+      <div class="hl reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <h3>MTTD down from 45 to under 15 minutes</h3>
+        <p>Tuned Falcon detection rules and used Charlotte AI to prioritise alerts. MTTR also dropped by 40%.</p>
+      </div>
+      <div class="hl reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Zero uncontained breaches</h3>
+        <p>150+ EDR/XDR alerts processed every week with 95%+ accurate classification across 60+ investigated incidents.</p>
+      </div>
+      <div class="hl reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4h18l-7 8v6l-4 2v-8z"/></svg></div>
+        <h3>35% fewer false positives</h3>
+        <p>Updated Falcon detection rule filters, saving 8+ analyst hours a week and raising overall SOC throughput.</p>
+      </div>
+      <div class="hl reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+        <h3>30% higher MITRE ATT&amp;CK coverage</h3>
+        <p>Mapped 60+ TTPs and closed 12 critical detection gaps in 6 months, using Atomic Red Team simulation data.</p>
+      </div>
+      <div class="hl reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></div>
+        <h3>300+ exfiltration attempts blocked</h3>
+        <p>Over 12 months, via Forcepoint DLP integrated with Falcon alerting, giving correlated endpoint and data visibility.</p>
+      </div>
+      <div class="hl reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-7 7-7s7 3 7 7"/><path d="M17 11l2 2 4-4"/></svg></div>
+        <h3>8+ insider threats identified</h3>
+        <p>Caught threats that slipped past rule-based detection, using AI-driven UEBA behavioural baselines in Falcon.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Skills -->
+<section id="skills" class="alt">
+  <div class="container">
+    <div class="section-label mono">// skills &amp; tools</div>
+    <h2 class="section-title">Technical toolkit</h2>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <h3>Security Operations</h3>
+        <div class="tags">
+          <span class="tag">Security Alerts Investigation</span>
+          <span class="tag">Security Incident Response</span>
+          <span class="tag">Alert Triage &amp; Escalation</span>
+          <span class="tag">Incident Documentation</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h3>Detection &amp; Threat Hunting</h3>
+        <div class="tags">
+          <span class="tag">Threat Hunting</span>
+          <span class="tag">Detection Engineering</span>
+          <span class="tag">MITRE ATT&amp;CK</span>
+          <span class="tag">Atomic Red Team</span>
+          <span class="tag">UEBA</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h3>Platforms</h3>
+        <div class="tags">
+          <span class="tag">CrowdStrike Falcon EDR/XDR</span>
+          <span class="tag">Falcon OverWatch</span>
+          <span class="tag">Falcon Spotlight</span>
+          <span class="tag">Charlotte AI</span>
+          <span class="tag">Splunk Enterprise (SPL)</span>
+          <span class="tag">Forcepoint DLP</span>
+          <span class="tag">Trend Micro Apex One</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Certifications -->
+<section id="certifications">
+  <div class="container">
+    <div class="section-label mono">// certifications</div>
+    <h2 class="section-title">Certifications</h2>
+    <div class="certs">
+      <div class="cert reveal"><div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/></svg></div><h3>CrowdStrike Falcon</h3><p>EDR / XDR</p></div>
+      <div class="cert reveal"><div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/></svg></div><h3>Trend Micro Apex One</h3><p>Endpoint Security</p></div>
+      <div class="cert reveal"><div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/></svg></div><h3>Trend Micro Central One</h3><p>Central Management</p></div>
+      <div class="cert reveal"><div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/></svg></div><h3>Forcepoint DLP</h3><p>Data Loss Prevention</p></div>
+      <div class="cert reveal"><div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/></svg></div><h3>Forcepoint DSPM</h3><p>Data Security Posture</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Education -->
+<section id="education" class="alt">
+  <div class="container">
+    <div class="section-label mono">// education</div>
+    <h2 class="section-title">Education</h2>
+    <div class="edu-grid">
+      <div class="edu reveal">
+        <h3>B.Tech</h3>
+        <div class="school">S P Memorial Institute of Technology, Prayagraj</div>
+        <div class="years mono">08/2022 – 07/2025</div>
+      </div>
+      <div class="edu reveal">
+        <h3>Diploma in Electrical Engineering</h3>
+        <div class="school">Govt. Polytechnic Kenaura, Sultanpur</div>
+        <div class="years mono">07/2017 – 10/2020</div>
+      </div>
+      <div class="edu secondary reveal">
+        <h3>Intermediate</h3>
+        <div class="school">K M I C Kandawa Purvi, Varanasi</div>
+        <div class="years mono">07/2014 – 05/2016</div>
+      </div>
+      <div class="edu secondary reveal">
+        <h3>High School</h3>
+        <div class="school">Navneeta Kunwar Public School, Varanasi</div>
+        <div class="years mono">07/2012 – 05/2014</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-box reveal">
+      <div class="section-label mono">// contact</div>
+      <h2>Let's work together</h2>
+      <p>I'm open to SOC Analyst, incident response and detection engineering roles. The quickest way to reach me is by email or phone.</p>
+      <div class="contact-links">
+        <a href="mailto:rahulevision2@gmail.com" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>
+          rahulevision2@gmail.com
+        </a>
+        <a href="tel:+916392058713" class="btn btn-outline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg>
+          +91 63920 58713
+        </a>
+        <a href="https://www.linkedin.com/in/rahul-kumar-gupta-7485aa21a" target="_blank" rel="noopener" class="btn btn-outline">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">&copy; <span id="yr"></span> Rahul Kumar Gupta &middot; SOC Analyst &middot; New Delhi, India</div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open')));
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
